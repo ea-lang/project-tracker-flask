@@ -53,7 +53,8 @@ def show_project_info():
 
     project = request.args.get('project')
     project_info = hackbright.get_project_by_title(project)
-    return render_template("project_info.html", project_info=project_info)
+    student_grades = hackbright.get_grades_by_title(project)
+    return render_template("project_info.html", project_info=project_info, student_grades = student_grades)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
