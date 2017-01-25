@@ -48,7 +48,12 @@ def process_student():
 
     return render_template("student_processed.html", firstname=firstname, lastname=lastname, github=github)
 
+@app.route("/project")
+def show_project_info():
 
+    project = request.args.get('project')
+    project_info = hackbright.get_project_by_title(project)
+    return render_template("project_info.html", project_info=project_info)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
